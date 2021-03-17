@@ -1,34 +1,29 @@
 // Collect start and end time
 let startDate = new Date();
-let startTime = startDate.getHours().toString() + ":" + startDate.getMinutes().toString() + ":" + startDate.getSeconds().toString();
-let endTime = '19:00:00';
+let endDate = new Date(); // (Year, Month-1, Day, Hour, Minute, Second)
 let timeDisplay;
 
 function timeDifference() {
-    // Split time at colon
-    let startTimeSplit = startTime.split(':');
-    let endTimeSplit = endTime.split(':');
+    // Get difference in time in milliseconds
+    let millisecondsSpent = endDate.getTime() - startDate.getTime();
+
+    // Convert milliseconds into minutes
+    let totalMinutesSpent = (millisecondsSpent / 1000) / 60;
     
-    // Convert hours into minutes by multiplying by 60 - the number of minutes in an hour
-    let startMinutes = (Number(startTimeSplit[0])) * 60 + (Number(startTimeSplit[1]));
-    let endMinutes = (Number(endTimeSplit[0])) * 60 + (Number(endTimeSplit[1]));
-    
-    // Calculate actual minutes spent
-    let totalMinutesSpent = endMinutes - startMinutes;
-    
-    // Convert minutes spent into hours and minutes
-    let hoursSpent = Math.floor(totalMinutesSpent / 60);
-    let minutesSpent = totalMinutesSpent % 60;
-    
-    if (endTime < startTime) {
-        hoursSpent = 24 + hoursSpent;
-        minutesSpent = 60 + minutesSpent;
-    }
+    // Convert minutes spent into Days, Hours and Minutes
+    let totalHoursSpent = totalMinutesSpent / 60;
+    let daysSpent = Math.floor(totalHoursSpent / 24);
+    let hoursSpent = Math.floor(totalHoursSpent % 24);
+    let minutesSpent = Math.floor(totalMinutesSpent % 60);
 
     // Display total time in the H:M format
-    timeDisplay = hoursSpent.toString() + "H" + minutesSpent.toString() + "m";
+    timeDisplay = daysSpent.toString() + "D:" + 
+    hoursSpent.toString() + "H:" + 
+    minutesSpent.toString() + "m";
 }
 
-timeDifference(startTime, endTime);
+// Run function
+timeDifference(startDate, endDate);
 
+// Display time spent in D:H:m format
 timeDisplay;
