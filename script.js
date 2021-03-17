@@ -43,12 +43,8 @@ function timeCalculation() {
   let hoursSpent = Math.floor(totalHoursSpent % 24);
   let minutesSpent = Math.floor(totalMinutesSpent % 60);
 
-  // Extract seconds from time and invert if past one minute (Seconds value = negative)
-  // 0 minutes 24 seconds & 1 minute 36 seconds
-  // 1 minute increments as per above
-  // 0 - 24 = -24 seconds
-  // 60 + -24 = 36 seconds
-  // Final display would read 1M:36S
+  
+  // Calculate seconds and invert if second value is lower than first value
   let secondsSpent = endDate.getSeconds() - startDate.getSeconds();
   
   if (endDate.getSeconds() < startDate.getSeconds()) {
