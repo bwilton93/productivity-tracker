@@ -1,7 +1,7 @@
 // Collect start and end time
 let startDate = new Date();
 let startTime = startDate.getHours().toString() + ":" + startDate.getMinutes().toString() + ":" + startDate.getSeconds().toString();
-let endTime = '19:28:92';
+let endTime = '19:00:00';
 let timeDisplay;
 
 function timeDifference() {
@@ -20,9 +20,15 @@ function timeDifference() {
     let hoursSpent = Math.floor(totalMinutesSpent / 60);
     let minutesSpent = totalMinutesSpent % 60;
     
+    if (endTime < startTime) {
+        hoursSpent = 24 + hoursSpent;
+        minutesSpent = 60 + minutesSpent;
+    }
+
     // Display total time in the H:M format
     timeDisplay = hoursSpent.toString() + "H" + minutesSpent.toString() + "m";
 }
 
 timeDifference(startTime, endTime);
+
 timeDisplay;
