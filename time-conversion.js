@@ -1,5 +1,6 @@
 // Collect start and end time
-let startTime = '13:50:23';
+let startDate = new Date();
+let startTime = startDate.getHours().toString() + ":" + startDate.getMinutes().toString() + ":" + startDate.getSeconds().toString();
 let endTime = '19:28:92';
 let timeDisplay;
 
