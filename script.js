@@ -27,7 +27,7 @@ function clearButton() {
   // Clear displayed information
   document.getElementById("start-time").innerHTML = "Start time: N/A";
   document.getElementById("end-time").innerHTML = "End time: N/A";
-  document.getElementById("display-time").innerHTML ="Time elapsed: 0D:0H:0M";
+  document.getElementById("display-time").innerHTML ="Time elapsed: 0D:0H:0M:0S";
 }
 
 function timeCalculation() {
