@@ -47,8 +47,10 @@ function timeCalculation() {
   // Calculate seconds and invert if second value is lower than first value
   let secondsSpent = endDate.getSeconds() - startDate.getSeconds();
   
+  // Allows values past 1 minute to calculate correctly
+  // If timer passes 60, value for secondsSpent would be negative
   if (endDate.getSeconds() < startDate.getSeconds()) {
-    secondsSpent = 60 + secondsSpent;
+    secondsSpent = 60 + secondsSpent; 
   }
 
   // Display total time in the H:M format
